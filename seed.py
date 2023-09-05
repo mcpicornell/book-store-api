@@ -11,18 +11,17 @@ cursor = db.cursor()
 
 def areStock(stock):
     if(stock == 0):
-        return True
-    else: 
         return False
-
-stock = random.randint(0, 100)
+    else: 
+        return True
 
 for _ in range(num_records):
-    author = fake.name()
-    title = fake.sentence(nb_words=4, variable_nb_words=True)
-    description = fake.paragraph()
-    stock = stock
-    isAvaliable = areStock(stock)
+    stock = random.randint(0, 100)
+    if(stock):
+        author = fake.name()
+        title = fake.sentence(nb_words=4, variable_nb_words=True)
+        description = fake.paragraph()
+        isAvaliable = areStock(stock)
 
     sql = f"INSERT INTO {TABLE} (author, title, description, stock, isAvaliable) VALUES ('{author}', '{title}', '{description}', {stock}, {isAvaliable});"
 
